@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SPK Penjualan Baju</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Sistem Pendukung Keputusan - Penjualan Baju</h1>
+  </header>
+  <div class="container">
+    {% if session.get('user') %}
+    <nav class="sidebar">
+      <ul>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('nilai') }}">Hitung SAW</a></li>
+        <li><a href="{{ url_for('export') }}">Export Excel</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+    {% endif %}
+    <main class="content">
+      {% block body %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>
