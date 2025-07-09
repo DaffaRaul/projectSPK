@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Data Baju</h2>
+<table border="1"><tr><th>Nama</th><th>Harga</th><th>Stok</th><th>Rating</th><th>Aksi</th></tr>
+{% for i in items %}
+  <tr>
+    <form method="post" action="{{ url_for('item_action', action='edit') }}">
+      <td><input name="nama" value="{{ i.nama }}"></td>
+      <td><input name="harga" value="{{ i.harga }}"></td>
+      <td><input name="stok" value="{{ i.stok }}"></td>
+      <td><input name="rating" value="{{ i.rating }}"></td>
+      <input type="hidden" name="id" value="{{ i.id }}">
+      <td>
+        <button type="submit">Ubah</button>
+    </form>
+    <form method="post" action="{{ url_for('item_action', action='delete') }}">
+      <input type="hidden" name="id" value="{{ i.id }}">
+      <button type="submit">Hapus</button>
+    </form>
+      </td>
+  </tr>
+{% endfor %}
+</table>
+<h3>Tambah Baju</h3>
+<form method="post" action="{{ url_for('item_action', action='add') }}">
+  <input name="nama" placeholder="Nama">
+  <input name="harga" placeholder="Harga">
+  <input name="stok" placeholder="Stok">
+  <input name="rating" placeholder="Rating">
+  <button type="submit">Tambah</button>
+</form>
+{% endblock %}

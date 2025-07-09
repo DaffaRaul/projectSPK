@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Hasil Perhitungan SAW</h2>
+<table border="1"><tr><th>Rank</th><th>Nama</th><th>Score</th></tr>
+{% for h in hasil %}
+  <tr><td>{{ loop.index }}</td><td>{{ h.nama }}</td><td>{{ "%.4f"|format(h.score) }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}
